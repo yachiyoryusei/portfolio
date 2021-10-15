@@ -2,8 +2,8 @@
 /*global onclick*/
 /*global inputCheck*/
 /*global createList*/
+/*global createPieChart*/
 
-document.addEventListener("DOMContentLoaded", function(){
 //indexedDBの名前などの設定
 const dbName = "kakeiboDB";
 const storeName = "kakeiboStore";
@@ -31,7 +31,7 @@ database.onerror = function (event) {
 }
 
 //フォームの内容をDBに登録する
-function regist() {
+window.regist = function () {
     //フォームの入力チェック。falseが返却されたら登録処理を中断
     if (inputCheck() == false) {
         return;
@@ -196,4 +196,3 @@ function deleteData(id) {
     }
 }
 
-});

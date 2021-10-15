@@ -3,7 +3,6 @@
 /*global storeName*/
 /*global createPieChart*/
 
-document.addEventListener("DOMContentLoaded", function(){
 function createList() {
     //データベースからデータを全件取得
     let database = indexedDB.open(dbName);
@@ -53,4 +52,3 @@ function createList() {
         }
     }
 }
-});

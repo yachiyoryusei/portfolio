@@ -1,7 +1,6 @@
 /*global key*/
 /*global Chart*/
 
-document.addEventListener("DOMContentLoaded", function(){
 function createPieChart(rows) {
     //円グラフ用データを格納する連想配列
     let pieChartData = {};
@@ -59,4 +58,3 @@ function createPieChart(rows) {
     });
 
 }
-});
