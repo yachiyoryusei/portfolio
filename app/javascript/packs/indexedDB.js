@@ -1,3 +1,9 @@
+/*global indexedDB*/
+/*global onclick*/
+/*global inputCheck*/
+/*global createList*/
+
+document.addEventListener("DOMContentLoaded", function(){
 //indexedDBの名前などの設定
 const dbName = "kakeiboDB";
 const storeName = "kakeiboStore";
@@ -189,3 +195,5 @@ function deleteData(id) {
         console.log("データベースに接続できませんでした");
     }
 }
+
+});
