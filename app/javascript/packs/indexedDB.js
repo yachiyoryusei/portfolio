@@ -111,7 +111,7 @@ function insertData(balance, date, category, amount, memo) {
 }
 
 
-function createList() {
+window.createList = function () {
     //データベースからデータを全件取得
     let database = indexedDB.open(dbName);
     database.onsuccess = function (event) {
@@ -162,7 +162,7 @@ function createList() {
 }
 
 //データの削除
-function deleteData(id) {
+window.deleteData = function (id) {
     //データベースを開く
     let database = indexedDB.open(dbName, dbVersion);
     database.onupgradeneeded = function (event) {

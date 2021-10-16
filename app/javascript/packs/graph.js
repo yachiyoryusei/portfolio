@@ -1,7 +1,7 @@
 /*global key*/
 /*global Chart*/
 
-function createPieChart(rows) {
+window.createPieChart = function (rows) {
     //円グラフ用データを格納する連想配列
     let pieChartData = {};
 

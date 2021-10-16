@@ -4,7 +4,7 @@ function disableSelectBox(disabled) {
 }
 
 //収支入力フォームの内容チェック
-function inputCheck() {
+window.inputCheck = function () {
     //チェック結果 true:入力チェックOK　false:未記入アリ
     let result = true;
 
