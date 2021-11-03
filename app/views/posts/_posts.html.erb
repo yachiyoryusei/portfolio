@@ -1,0 +1,12 @@
+<%= content_tag :tr, nil, id: 'book-#{ book.id }' do %>
+          <%= content_tag :td %>
+          <%= link_to post.user do %>
+            <%= post.user.name %>
+          <% end %>
+          <%= content_tag :td %>
+          <% if post.user == current_user %>
+            <%= link_to '削除', post, method: :delete, data:{ 
+              confirm: '本当に削除してもよろしいですか？'},remote: true, 
+              class: 'btn-sm' 'btn-danger'%>
+          <% end %>
+<% end %>

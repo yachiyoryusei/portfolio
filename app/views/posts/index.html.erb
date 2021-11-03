@@ -1,0 +1,19 @@
+<%= content_tag :tbody, nil, class: 'new_post' do %>
+  <%= @posts.each do |post| %>
+    <%= content_tag :hr %>
+    <%= content_tag :p do %>
+      <%= content_tag :span do %>
+      email:
+      <% end %>
+      <%= link_to post.user.email, user_path(post.user.id) %>
+    <% end %>
+    
+    <%= content_tag :p do %>
+      <%= content_tag :span do %>
+      カテゴリー:
+      <% end %>
+      <%= link_to post.category_id, category_path(post.id) %>
+    <% end %>
+    <%= render 'posts', post: post %>
+  <% end %>
+<% end %>

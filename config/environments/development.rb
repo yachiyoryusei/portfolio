@@ -30,6 +30,8 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
+  
+  config.action_mailer.default_url_options = { host: 'https://715ecc1372f74fa1bc256bf4cc4c5bf9.vfs.cloud9.ap-northeast-1.amazonaws.com', port: 3000 }
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

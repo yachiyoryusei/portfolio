@@ -2,8 +2,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails',      '6.0.3'
-gem 'puma',       '4.3.6'
 gem 'sassc'
+gem 'jquery-rails'
+gem 'bootstrap'
+gem 'devise'
+gem 'puma',       '4.3.6'
 gem 'webpacker',  '4.0.7'
 gem 'turbolinks', '5.2.0'
 gem 'jbuilder',   '2.9.1'

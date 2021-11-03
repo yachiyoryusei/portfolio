@@ -1,0 +1,33 @@
+
+<%= form_for @post do |f| %>
+  <%= content_tag :p do %>
+    <%= f.radio_button :type, :income %>
+    <%= f.label :type, "収入", {value: :income} %>
+    <%= f.radio_button :type, :expence %>
+    <%= f.label :type, "支出", {value: :expence} %>
+  <% end %>
+<% end %>
+
+<%= form_with model: @post, local: true do |f| %>
+  <%= f.label :category_id, 'カテゴリー'  %>
+  <%= content_tag :br  %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, {
+                 prompt: '選択してください'}, class: 'form-control' %>
+  <%= content_tag :br  %>
+  <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+<% end %>
+
+<%= content_tag :div, nil, class: 'col-xs-9' do %>
+  <%= content_tag :table, nil, class: 'table' do%>
+    <%= content_tag :thead do %>
+      <%= content_tag :tr %>
+        <%= content_tag :th %>
+        |投稿者
+        <%= content_tag :th %>
+        |カテゴリー
+    <% end %>
+    
+    
+  <% end %>
+<% end %>
+
