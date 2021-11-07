@@ -1,23 +1,13 @@
+<h3>ユーザー一覧</h3>
 
-<h1>Users</h1>
-
-<table>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <th>Name</th>
-        <td><%= user.name %></td>
-        <th>Email</th>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+<tr>
+  <% @users.each do |user| %>
+    <th>Name:</th>
+    <td><%= user.name %></td>
+    <br>
+    <th>Email:</th>
+    <td><%= user.email %></td>
+    
+    <br>
+  <% end %>
+</tr>

@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :categories, dependent: :destroy
+  belongs_to :category
 end

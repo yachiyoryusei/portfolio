@@ -1,2 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h3>マイページ</h3>
+
+<tr>
+    <th>Name</th>
+    <td><%= @user.name %></td>
+    <br>
+    <th>Email</th>
+    <td><%= @user.email %></td>
+    
+    <br>
+    <td><%= link_to 'Edit', edit_user_registration_path(@user) %></td>
+    <td><%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

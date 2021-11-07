@@ -1,5 +1,5 @@
 <%= content_tag :tbody, nil, class: 'new_post' do %>
-  <%= @posts.each do |post| %>
+  <% @posts.each do |post| %>
     <%= content_tag :hr %>
     <%= content_tag :p do %>
       <%= content_tag :span do %>
@@ -8,12 +8,25 @@
       <%= link_to post.user.email, user_path(post.user.id) %>
     <% end %>
     
-    <%= content_tag :p do %>
-      <%= content_tag :span do %>
-      カテゴリー:
-      <% end %>
-      <%= link_to post.category_id, category_path(post.id) %>
-    <% end %>
-    <%= render 'posts', post: post %>
+    <%= content_tag :tr, nil, id: 'book-#{ book.id }' do %>
+          <%= content_tag :td %>
+          <%= content_tag :span do %>
+           名前:
+          <% end %>
+          <%= link_to post.user do %>
+            <%= post.user.name %>
+          <% end %>
+          <%= content_tag :span do %>
+           カテゴリー:
+          <% end %>
+          <%= content_tag :td %>
+          <%= link_to post.category.name %>
+          <%= content_tag :td %>
+          <% if post.user == current_user %>
+            <%= link_to '削除', post, method: :delete, data:{ 
+              confirm: '本当に削除してもよろしいですか？'}, 
+              class: 'btn-sm' 'btn-danger'%>
+          <% end %>
+　　<% end %>
   <% end %>
 <% end %>
