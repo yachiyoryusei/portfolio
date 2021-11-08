@@ -1,45 +1,17 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>MyMoney SampleCode</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
-    <!--sakuraの読み込みと、画面レイアウトのスタイルシートの読み込み-->
-    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-earthly.css" type="text/css">
-    <!--<link rel="stylesheet" href="../mains.css" type="text/css">-->
-
-    <!--IndexedDB関連のJavaScriptの読み込み-->
-    <!--<script src="indexedDB.js">s</script>-->
-
-
-    <!-- Chart.jsとグラフ表示のJavaScriptの読み込み -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-    <!--<script src="graph.js"></script>-->
-
-    <!--フォーム入力チェックのJavaScript読み込み-->
-    <!--<script src="inputCheck.js"></script>-->
-
-    <!--OGP（教材とは関係ない記述です）-->
-    <meta property="og:title" content="家計簿アプリ-MyMoney-" />
-    <meta property="og:site_name" content="家計簿アプリ-MyMoney-" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="TechpitのJavaScript教材『家計簿アプリを作りながら学ぶJavaScript！』のサンプルコードです" />
-    <meta property="og:url" content="https://hidehikokondo.github.io/MyMoney-TechPit/" />
-    <meta property="og:image" content="https://hidehikokondo.github.io/MyMoney-TechPit/ogp.png" />
-    
-</head>
-
-<body>
-    <header>
-        <h1 id="home">MyMoney</h1>
-        <div class="navi">
-            <button onclick="window.location.hash = '#home'">ホーム</button>
-            <button onclick="window.location.hash = '#input'">入力</button>
-            <button onclick="window.location.hash = '#inOutList'">入出金一覧</button>
-            <button onclick="window.location.hash = '#graph'">グラフ</button>
-        </div>
-    </header>
+<header>
+   <h1 id="home">MyMoney</h1>
+      <div class="navi">
+        <%= button_to "ホーム", "#home" %>
+        <%= button_to "入力", "#input" %>
+        <%= button_to "入出金一覧", "#inOutList" %>
+        <%= button_to "グラフ", "#graph" %>
+        <!--うまく共同するようになったら下記リンク削除-->
+        <!--<button onclick="window.location.hash = '#home'">ホーム</button>-->
+        <!--<button onclick="window.location.hash = '#input'">入力</button>-->
+        <!--<button onclick="window.location.hash = '#inOutList'">入出金一覧</button>-->
+        <!--<button onclick="window.location.hash = '#graph'">グラフ</button>-->
+      </div>
+</header>
     <article>
         <!-- 入力 -->
         <h2 id="input">入力</h2>
@@ -96,11 +68,10 @@
         </section>
 
     </article>
-    <footer>
-        &copy;MyMoney
-    </footer>
-    
-    
-</body>
+<footer>
+  &copy;MyMoney
+</footer>
 
-</html>
+<%= javascript_pack_tag 'graph.js' %>
+    
+    

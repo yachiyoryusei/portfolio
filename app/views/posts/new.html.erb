@@ -1,33 +1,45 @@
 
-<%= form_for @post do |f| %>
-  <%= content_tag :p do %>
-    <%= f.radio_button :type, :income %>
-    <%= f.label :type, "収入", {value: :income} %>
-    <%= f.radio_button :type, :expence %>
-    <%= f.label :type, "支出", {value: :expence} %>
-  <% end %>
-<% end %>
-
-<%= form_with model: @post, local: true do |f| %>
-  <%= f.label :category_id, 'カテゴリー'  %>
-  <%= content_tag :br  %>
-  <%= f.collection_select :category_id, Category.all, :id, :name, {
-                 prompt: '選択してください'}, class: 'form-control' %>
-  <%= content_tag :br  %>
-  <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
-<% end %>
-
-<%= content_tag :div, nil, class: 'col-xs-9' do %>
-  <%= content_tag :table, nil, class: 'table' do%>
-    <%= content_tag :thead do %>
-      <%= content_tag :tr %>
-        <%= content_tag :th %>
-        |投稿者
-        <%= content_tag :th %>
-        |カテゴリー
+<article>
+  <h2 id="input">入力</h2>
+    <%= form_with model: @post, local: true do |f| %>
+      <div>
+        <%= f.label "収支" %>
+        <br>
+        <%= f.radio_button :type, :income %>
+        <%= f.label :type, "収入", {value: :income} %>
+        <%= f.radio_button :type, :expence %>
+        <%= f.label :type, "支出", {value: :expence} %>
+      </div>
+  
+      <div>
+        <%= f.label :category_id, "カテゴリー"  %>
+        <br>
+        <%= f.collection_select :category_id, Category.all, :id, :name, {
+                 prompt: "選択してください"}, class: "form-control" %>
+      </div>
+      
+      <div>
+        <%= f.label :amount, "金額" %>
+        <%= f.number_field :amount, placeholder: "金額を記入" %>円
+        <br>
+        <%= f.label :note, "メモ" %>
+        <%= f.text_area :note, placeholder: "買ったものを記入" %>
+      </div>
+      <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
     <% end %>
+  
+  
+
+  <div class='col-xs-9'>
+    <table class='table'>
+      <thead>
+      <tr>
+        <th>|投稿者</th>
+        <th>|カテゴリー</th>
+      </tr>
+      </thead>
     
-    
-  <% end %>
-<% end %>
+    </table>
+  </div>
+</article>
 

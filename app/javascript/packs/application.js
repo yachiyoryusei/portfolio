@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("chart.js")
 import "./graph.js"
 import "./indexedDB.js"
 import "./inputCheck.js"
