@@ -1,32 +1,66 @@
-<%= content_tag :tbody, nil, class: 'new_post' do %>
-  <% @posts.each do |post| %>
-    <%= content_tag :hr %>
-    <%= content_tag :p do %>
-      <%= content_tag :span do %>
-      email:
-      <% end %>
-      <%= link_to post.user.email, user_path(post.user.id) %>
-    <% end %>
+<% @posts.each do |post| %>
+    <div>
+      <h4>
+        <%= post.user.name %>
+      </h4>
+    </div>
+      
+<table>
+  <tbody　class='new_post'>
+    <hr>
+   <tr>
+      <td>
+        <span>投稿日</span>
+      </td>
+      <td><%= post.date %></td>
+    </tr>
     
-    <%= content_tag :tr, nil, id: 'book-#{ book.id }' do %>
-          <%= content_tag :td %>
-          <%= content_tag :span do %>
-           名前:
-          <% end %>
-          <%= link_to post.user do %>
-            <%= post.user.name %>
-          <% end %>
-          <%= content_tag :span do %>
-           カテゴリー:
-          <% end %>
-          <%= content_tag :td %>
-          <%= link_to post.category.name %>
-          <%= content_tag :td %>
+    <tr>
+      <td>
+        <span>収支</span>
+      </td>
+      <th>
+        <%= post.type %>
+      </th>
+    </tr>
+    
+    <tr id='book-#{ book.id }'>
+      <td>
+        <span>カテゴリー:</span>
+      </td>
+      <th>
+        <%= post.category.name %>
+      </th>
+    </tr>
+    
+    <tr>
+      <td>
+        <span>金額</span>
+      </td>
+      <th>
+        <%= post.amount %>
+      </th>
+    </tr>
+    
+    <tr>
+      <td>
+        <span>メモ</span>
+      </td>
+      <th>
+        <%= post.note %>
+      </th>
+    </tr>
+    
+    <tr>
+     <td>
           <% if post.user == current_user %>
             <%= link_to '削除', post, method: :delete, data:{ 
               confirm: '本当に削除してもよろしいですか？'}, 
               class: 'btn-sm' 'btn-danger'%>
           <% end %>
-　　<% end %>
-  <% end %>
+     </td>
+    </tr>
+　　</tr>
+  </tbody>
+</table>
 <% end %>
