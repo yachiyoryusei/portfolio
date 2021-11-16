@@ -11,6 +11,7 @@ require("chart.js")
 import "./graph.js"
 import "./indexedDB.js"
 import "./inputCheck.js"
+import "./posts.js"
 import 'bootstrap';
 import '../stylesheets/application';
 

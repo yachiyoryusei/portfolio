@@ -13,7 +13,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save 
-      redirect_to posts_path
+      respond_to do |format|
+        format.html {redirect_to posts_path}
+        format.json {render json: @post }
+      end
     else
       render 'new'
     end

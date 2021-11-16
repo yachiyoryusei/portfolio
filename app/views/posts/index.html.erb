@@ -20,7 +20,11 @@
         <span>収支</span>
       </td>
       <th>
-        <%= post.type %>
+        <% if (post.type == 0) %>
+        収入
+        <% elsif (post.type == 1) %>
+        支出
+        <% end %>
       </th>
     </tr>
     
