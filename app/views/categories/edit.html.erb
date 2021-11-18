@@ -1,13 +1,10 @@
-<%= content_tag :div, class: 'row' do %>
-  <%= content_tag :div,nil, class: 'col-xs-3' %>
-  <%= content_tag :div, class: 'col-xs-6' do %>
+
+  <div>
     <%= form_with model: @category, local: true do |f| %>
       <%= f.label :name, 'カテゴリー名' %>
-      <%= content_tag :br %>
+      <br>
       <%= f.text_field :name, class: 'form-control' %>
-      <%= content_tag :br %> 
+      <br> 
       <%= f.submit '保存', class: 'btn btn-primary btn-block' %>
     <% end %>
-  <% end %>
-  <%= content_tag :div,nil, class: 'col-xs-3' %>
-<% end %>
+  </div>

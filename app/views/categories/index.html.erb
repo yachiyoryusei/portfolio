@@ -1,36 +1,42 @@
-<%= content_tag :div, nil, class: 'row' do %>
-  <%= content_tag :div, nil, class: 'col-xs-3' do %>
+
+  <div>
     <%= form_with model: @category, local: true do |f| %>
       <%= f.label :name, '｜カテゴリー名' %>
-      <%= content_tag :br %>
+      <br>
       <%= f.text_field :name, class: 'form-control' %>
-      <%= content_tag :br %>
+      <br>
       <%= f.submit '追加', class: 'btn btn-primary btn-block' %>
     <% end %>
-  <% end %>
+  </div>
   
-  <%= content_tag :div, nil, class: 'col-xs-9' do %>
-    <%= content_tag :table, nil, class: 'table' do %>
-      <%= content_tag :thead do %>
-        <%= content_tag :tr %>
-          <%= content_tag :th %>
+  <div>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>
             ｜カテゴリー名
-          <%= content_tag :th %>
-          <%= content_tag :th %>
-      <% end %>
-      <%= content_tag :tbody do %>
-      
+          </th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
         <% @categories.each do |category| %>
-          <%= content_tag :tr %>
-            <%= content_tag :td %>
+          <% if user_signed_in? && current_user.id == category.user_id %>
+          <tr>
+            <td>
               <%= category.name %>
-            <%= content_tag :td %>
+            </td>
+            <td>
               <%= link_to '編集', edit_category_path(category), class: 'btn-sm btn-primary' %>
-            <%= content_tag :td %>
+            </td>
+            <td>
               <%= link_to '削除', category_path(category), method: :delete, data: 
               {confirm: '本当に削除しますか？'}, class: 'btn-sm btn-danger' %>
+            </td>
+          </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
+      </tbody>
+    </table>
+  </div>

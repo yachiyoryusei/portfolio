@@ -1,14 +1,22 @@
 <% @posts.each do |post| %>
     <div>
+      <hr>
       <h4>
         <%= post.user.name %>
       </h4>
+      <hr>
     </div>
+    
+    <h2 id="graph">グラフ</h2>
+        <section>
+            <!-- グラフを表示 -->
+            <canvas id="pieChart"></canvas>
+        </section>
       
 <table>
   <tbody　class='new_post'>
     <hr>
-   <tr>
+    <tr>
       <td>
         <span>投稿日</span>
       </td>
@@ -54,17 +62,12 @@
         <%= post.note %>
       </th>
     </tr>
-    
-    <tr>
-     <td>
-          <% if post.user == current_user %>
+          
+  </tbody>
+</table>
+  <% if post.user == current_user %>
             <%= link_to '削除', post, method: :delete, data:{ 
               confirm: '本当に削除してもよろしいですか？'}, 
               class: 'btn-sm' 'btn-danger'%>
-          <% end %>
-     </td>
-    </tr>
-　　</tr>
-  </tbody>
-</table>
+  <% end %>
 <% end %>
