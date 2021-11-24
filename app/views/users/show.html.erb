@@ -14,9 +14,8 @@
 
 <h2 id="graph">グラフ</h2>
         <section>
-            <% data = @posts.group(:category).sum(:amount).map{|k, v| [k.name, v]}.to_h %>
+            <% data = @posts.where(type:1).group(:category).sum(:amount).map{|k, v| [k.name, v]}.to_h %>
             <%= pie_chart data %>
-          
         </section>
 
 <% @posts.each do |post| %>
