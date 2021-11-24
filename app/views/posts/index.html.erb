@@ -1,18 +1,11 @@
-<% @posts.each do |post| %>
-    <div>
-      <hr>
-      <h4>
-        <%= post.user.name %>
-      </h4>
-      <hr>
-    </div>
-    
-    <h2 id="graph">グラフ</h2>
+<h2 id="graph">グラフ</h2>
         <section>
-            <!-- グラフを表示 -->
-            <canvas id="pieChart"></canvas>
+          <% if @posts.type == 1 %>
+            <% data = @posts.group(:category).sum(:amount).map{|k, v| [k.name, v]}.to_h %>
+            <%= pie_chart data %>
+          <% end %>
         </section>
-      
+
 <table>
   <tbody　class='new_post'>
     <hr>
@@ -31,7 +24,7 @@
         <% if (post.type == 0) %>
         収入
         <% elsif (post.type == 1) %>
-        支出
+        支出 
         <% end %>
       </th>
     </tr>

@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
+    @current_categories = Category.where(user_id: current_user.id)
   end
   
   def index
@@ -40,5 +41,6 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:user_id, :type, :category_id, :amount, :note, :date)
     end
+    
   
 end

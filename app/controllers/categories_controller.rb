@@ -10,7 +10,10 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @category.user_id = current_user.id
     if @category.save
-      redirect_to categories_path
+      respond_to do |format|
+        format.html {redirect_to categories_path}
+        format.json {render json: @category }
+      end
     else
       @categories = Category.all
       render 'index'

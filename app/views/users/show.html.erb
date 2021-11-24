@@ -11,3 +11,72 @@
     <td><%= link_to 'Edit', edit_user_registration_path(@user) %></td>
     <td><%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
+
+<h2 id="graph">グラフ</h2>
+        <section>
+            <% data = @posts.group(:category).sum(:amount).map{|k, v| [k.name, v]}.to_h %>
+            <%= pie_chart data %>
+          
+        </section>
+
+<% @posts.each do |post| %>
+    
+      
+<table>
+  <tbody　class='new_post'>
+    <hr>
+    <tr>
+      <td>
+        <span>投稿日</span>
+      </td>
+      <td><%= post.date %></td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span>収支</span>
+      </td>
+      <th>
+        <% if (post.type == 0) %>
+        収入
+        <% elsif (post.type == 1) %>
+        支出
+        <% end %>
+      </th>
+    </tr>
+    
+    <tr id='book-#{ book.id }'>
+      <td>
+        <span>カテゴリー:</span>
+      </td>
+      <th>
+        <%= post.category.name %>
+      </th>
+    </tr>
+    
+    <tr>
+      <td>
+        <span>金額</span>
+      </td>
+      <th>
+        <%= post.amount %>
+      </th>
+    </tr>
+    
+    <tr>
+      <td>
+        <span>メモ</span>
+      </td>
+      <th>
+        <%= post.note %>
+      </th>
+    </tr>
+          
+  </tbody>
+</table>
+  <% if post.user == current_user %>
+            <%= link_to '削除', post, method: :delete, data:{ 
+              confirm: '本当に削除してもよろしいですか？'}, 
+              class: 'btn-sm' 'btn-danger'%>
+  <% end %>
+<% end %>
