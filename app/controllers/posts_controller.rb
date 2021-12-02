@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @current_categories = Category.where(user_id: current_user.id)
     @post.user_id = current_user.id
     if @post.save 
       respond_to do |format|

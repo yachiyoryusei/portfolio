@@ -1,13 +1,86 @@
-<h3>ユーザー一覧</h3>
+<h3>マイページ</h3>
+
+<h3>
+収支の残高
+</h3>
+<h3>
+  <%= @posts.where(type:0).sum(:amount) -  @posts.where(type:1).sum(:amount) %>
+</h3>
+
 
 <tr>
-  <% @users.each do |user| %>
-    <th>Name:</th>
-    <td><%= user.name %></td>
+    <th>名前</th>
+    <td><%= @user.name %></td>
     <br>
-    <th>Email:</th>
-    <td><%= user.email %></td>
-    
     <br>
-  <% end %>
+    <td><%= link_to '編集', edit_user_registration_path(@user) %></td>
+    <td><%= link_to '削除', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
+
+<h2 id="graph">支出グラフ</h2>
+        <section>
+            <% data = @posts.where(type:1).group(:category).sum(:amount).map{|k, v| [k.name, v]}.to_h %>
+            <%= pie_chart data %>
+        </section>
+
+<% @posts.each do |post| %>
+    
+      
+<table>
+  <tbody　class='new_post'>
+    <hr>
+    <tr>
+      <td>
+        <span>投稿日</span>
+      </td>
+      <td><%= post.date %></td>
+    </tr>
+    
+    <tr>
+      <td>
+        <span>収支</span>
+      </td>
+      <th>
+        <% if (post.type == 0) %>
+        収入
+        <% elsif (post.type == 1) %>
+        支出
+        <% end %>
+      </th>
+    </tr>
+    
+    <tr id='book-#{ book.id }'>
+      <td>
+        <span>カテゴリー:</span>
+      </td>
+      <th>
+        <%= post.category.name %>
+      </th>
+    </tr>
+    
+    <tr>
+      <td>
+        <span>金額</span>
+      </td>
+      <th>
+        <%= post.amount %>
+      </th>
+    </tr>
+    
+    <tr>
+      <td>
+        <span>メモ</span>
+      </td>
+      <th>
+        <%= post.note %>
+      </th>
+    </tr>
+          
+  </tbody>
+</table>
+  <% if post.user == current_user %>
+            <%= link_to '削除', post, method: :delete, data:{ 
+              confirm: '本当に削除してもよろしいですか？'}, 
+              class: 'btn-sm' 'btn-danger'%>
+  <% end %>
+<% end %>

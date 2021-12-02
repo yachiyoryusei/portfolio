@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        date: 日付
+        type: 収支
+        category_id: カテゴリー
+        amount: 金額
+        note: メモ
+        

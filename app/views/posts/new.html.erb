@@ -2,6 +2,7 @@
 <article>
   <h2 id="input">入力</h2>
     <%= form_with model: @post do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       <div>
         <%= f.label :date, "日付" %>
         <%= f.date_field :date %>
