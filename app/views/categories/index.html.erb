@@ -1,6 +1,6 @@
 
   <div>
-    <%= form_with model: @category do |f| %>
+    <%= form_with model: @category, remote: true do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       <%= f.label :name, '｜カテゴリー名' %>
       <br>

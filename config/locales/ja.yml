@@ -8,3 +8,5 @@ ja:
         amount: 金額
         note: メモ
         
+      category:
+        name: カテゴリー名

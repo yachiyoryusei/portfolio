@@ -4,15 +4,17 @@
     <title>Project1</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-earthly.css" type="text/css">
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--<link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-earthly.css" type="text/css">-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     
   </head>
 
   <body>
+    
+  <nav class="navi">
     
     <% if user_signed_in? %>
       <%= link_to "新規投稿", new_post_path %>
@@ -26,5 +28,6 @@
       <%= link_to "投稿一覧", posts_path %>
     
     <%= yield %>
+  </nav>
   </body>
 </html>
