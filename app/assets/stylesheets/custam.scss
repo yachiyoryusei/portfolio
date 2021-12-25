@@ -49,6 +49,7 @@ input {
 .submit {
     display: block;
     text-align: center;
+    background-color: #1C1D21;
 }
 .submit button {
     width: 120px;
@@ -79,9 +80,60 @@ footer {
 .alert {
    color:#262626; 
    background:#FFEBE8;
-   text-align: center;
+   text-align: left;
    border: 2px sol
    id #990000 ;
    padding: 12px; font-weight:850;
  }
  
+ .navi{
+    white-space: nowrap;
+    justify-content: space-around;
+    text-align: center;
+    width:100%;
+ }
+ 
+ ///////users//////
+ .user_balance {
+   padding-top: 5px;
+   border: #212529 solid 3px;
+   border-radius: 5px;
+   margin: 5px auto;
+   text-align: center;
+   justify-content: space-around;
+ }
+ 
+ //////カテゴリー///////
+ .category_entry {
+    width: 70%;
+    margin: 20px auto;
+ }
+ 
+ .category_main {
+    font-size: 1.5rem;
+    width: 80%;
+    margin: 0 auto;
+ }
+/////posts////////
+select,input, textarea{
+    padding: 5px;
+    border: 2px solid #212121;
+    border-radius: 5px;
+}
+
+.contaner {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.post-note {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+}
+
+.new-post {
+    margin: 10px 0;
+    text-align: left;
+}
+

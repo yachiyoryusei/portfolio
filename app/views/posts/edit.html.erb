@@ -1,6 +1,5 @@
-
 <article>
-  <h2 id="input">新規投稿</h2>
+  <h2 id="input">編集</h2>
     <%= form_with model: @post do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="contaner">
@@ -69,14 +68,14 @@
         contentType: 'application/json',
         dataType: 'json',
         success: function(response) {
+          alert(response)
             location.href = '<%= posts_path %>';
         },
         error:  function(response) {
-          alert("未入力項目があります");
+          alert(response)
         }
       })
     })
   });
 </script>
-
 

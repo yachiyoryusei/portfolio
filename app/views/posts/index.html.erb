@@ -1,18 +1,18 @@
 <% @posts.each do |post| %>
-
+<h3> <%= post.user.name %></h3>
 <table>
   <tbody　class='new_post'>
     <hr>
     <tr>
       <td>
-        <span>投稿日</span>
+        <span>投稿日:</span>
       </td>
       <td><%= post.date %></td>
     </tr>
     
     <tr>
       <td>
-        <span>収支</span>
+        <span>収支:</span>
       </td>
       <th>
         <% if (post.type == 0) %>
@@ -34,7 +34,7 @@
     
     <tr>
       <td>
-        <span>金額</span>
+        <span>金額:</span>
       </td>
       <th>
         <%= post.amount %>
@@ -43,7 +43,7 @@
     
     <tr>
       <td>
-        <span>メモ</span>
+        <span>メモ:</span>
       </td>
       <th>
         <%= post.note %>
@@ -53,8 +53,9 @@
   </tbody>
 </table>
   <% if post.user == current_user %>
-            <%= link_to '削除', post, method: :delete, data:{ 
-              confirm: '本当に削除してもよろしいですか？'}, 
-              class: 'btn-sm' 'btn-danger'%>
+    <%= link_to '編集', edit_post_path(post), class: 'btn-sm' 'btn-danger'%>
+  
+    <%= link_to '削除', post, method: :delete, data:{ 
+      confirm: '本当に削除してもよろしいですか？'}, class: 'btn-sm' 'btn-danger'%>
   <% end %>
 <% end %>

@@ -1,21 +1,17 @@
-<h3>マイページ</h3>
-
-<h3>
-収支の残高
-</h3>
-<h3>
-  <%= @posts.where(type:0).sum(:amount) -  @posts.where(type:1).sum(:amount) %>
-</h3>
-
-
+<h2>マイページ</h2>
 <tr>
-    <th>名前</th>
-    <td><%= @user.name %></td>
+   <h3> <%= @user.name %>さん</h3>
     <br>
-    <br>
-    <td><%= link_to '編集', edit_user_registration_path(@user) %></td>
-    <td><%= link_to '削除', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'ユーザー編集', edit_user_registration_path(@user) %></td>
+    <td><%= link_to 'アカウント削除', @user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
+
+<div class= "row user_balance">
+  <h3 class="col-5">収支の残高</h3>
+  <h3 class="col-5">
+    <%= @posts.where(type:0).sum(:amount) -  @posts.where(type:1).sum(:amount) %>円
+  </h3>
+</div>
 
 <h2 id="graph">支出グラフ</h2>
         <section>
