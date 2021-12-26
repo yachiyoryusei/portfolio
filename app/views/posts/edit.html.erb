@@ -1,6 +1,6 @@
 <article>
   <h2 id="input">編集</h2>
-    <%= form_with model: @post do |f| %>
+    <%= form_with model: @post, method: :put do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="contaner">
       
@@ -32,7 +32,7 @@
         <%= f.label :note, "メモ：" %>
         <%= f.text_area :note, placeholder: "買ったものを記入" %>
       </div>
-      <div id="post_btn" class="btn btn-primary btn-block">投稿</div>
+      <div id="post_btn" class="btn btn-primary btn-block">保存する</div>
     </div>
     <% end %>
 </article>
@@ -62,17 +62,16 @@
       };
       
       $.ajax({
-        type: 'POST',
-        url: '/posts',
+        type: 'PUT',
+        url: '/posts/<%= @post.id %>',
         data: JSON.stringify(data),
         contentType: 'application/json',
         dataType: 'json',
         success: function(response) {
-          alert(response)
             location.href = '<%= posts_path %>';
         },
         error:  function(response) {
-          alert(response)
+           alert(response.responseJSON.join('\n'));
         }
       })
     })

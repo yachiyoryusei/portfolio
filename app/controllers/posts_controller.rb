@@ -35,6 +35,8 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by(id: params[:id])
+    @current_categories = Category.where(user_id: current_user.id)
+    @post.user_id = current_user.id
     if @post.update(post_params)
      respond_to do |format|
         format.html {redirect_to posts_path}
@@ -43,7 +45,7 @@ class PostsController < ApplicationController
     else
       respond_to do |format|
         format.html {render 'edit' }
-        format.json {render json: @post.errors.full_messages }
+        format.json {render json: @post.errors.full_messages, status: 422 }
       end
     end
   end

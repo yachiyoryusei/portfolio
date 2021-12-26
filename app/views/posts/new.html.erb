@@ -72,7 +72,7 @@
             location.href = '<%= posts_path %>';
         },
         error:  function(response) {
-          alert("未入力項目があります");
+          alert(response.responseJSON.join('\n'));
         }
       })
     })
