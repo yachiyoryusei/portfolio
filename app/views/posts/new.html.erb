@@ -47,8 +47,8 @@
     $('#post_btn').on('click', function() {
       var token = $('input[name="authenticity_token"]').val();
       var date = $('#post_date').val();
-      var type0 = $('#post_type_0').val();
-      var type1 = $('#post_type_1').val();
+      var type0 = $('#post_type_0').prop('checked');
+      var type1 = $('#post_type_1').prop('checked');
       var category_id = $('#post_category_id').val();
       var amount = $('#post_amount').val();
       var note =$('#post_note').val();
