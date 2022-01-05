@@ -15,20 +15,30 @@ class CategoriesController < ApplicationController
         format.json {render json: @category }
       end
     else
-      @categories = Category.all
-      render 'index'
+      respond_to do |format|
+        format.html {render 'index' }
+        format.json {render json: @category.errors.full_messages, status: 422 }
+      end
     end
   end
   
   def edit
+     @category = Category.find_by(id: params[:id])
   end
   
   
   def update
+    @category = Category.find_by(id: params[:id])
     if @category.update(category_params)
-      redirect_to categories_path
+      respond_to do |format|
+        format.html {redirect_to categories_path}
+        format.json {render json: @category }
+      end
     else
-      render 'edit'
+      respond_to do |format|
+        format.html {render 'index' }
+        format.json {render json: @category.errors.full_messages, status: 422 }
+      end
     end
   end
   

@@ -1,12 +1,12 @@
 
   <div class="category_entry">
-    <%= form_with model: @category, remote: true do |f| %>
+    <%= form_with model: @category do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       <%= f.label :name, '追加したいカテゴリー名を入力' %>
       <br>
       <%= f.text_field :name, class: 'form-control' %>
       <br>
-      <%= f.submit '追加', class: 'btn btn-primary btn-block', id: :categories_btn %>
+      <div id="categories_btn" class="btn btn-primary btn-block">追加</div>
     <% end %>
   </div>
   
@@ -39,3 +39,36 @@
       </tbody>
     </table>
   </div>
+  
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<script>
+  $(function() {
+    $('#categories_btn').on('click', function() {
+      var token = $('input[name="authenticity_token"]').val();
+      var name = $('#category_name').val();
+      
+      var data = {
+        authenticity_token: token,
+        name: name
+      };
+      
+      $.ajax({
+        type: 'POST',
+        url: '/categories',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function(response) {
+            location.href = '<%= categories_path %>';
+        },
+        error:  function(response) {
+           alert(response.responseJSON.join('\n'));
+        }
+      })
+    })
+  });
+</script>
+
