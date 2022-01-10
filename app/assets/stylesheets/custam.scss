@@ -45,7 +45,7 @@ input {
     margin: 0 10px 10px 0;
 }
 
-/* 登録ボタンのスタイル */
+/* 登録ボタン */
 .submit {
     display: block;
     text-align: center;
@@ -56,20 +56,19 @@ input {
     height: 40px;
 }
 
-/* 見出しのスタイル */
+/* 見出し */
 h2 {
     padding-bottom: 5px;
     border-bottom: #008b6a solid 2px;
 }
 
-/* 入出金一覧をスクロール */
 #list {
     height: 400px;
     overflow: scroll;
     overflow-x: hidden;
 }
 
-/* フッターのレイアウト */
+/* フッター */
 footer {
     margin: 50px auto 20px auto;
     text-align: center;
@@ -93,7 +92,7 @@ footer {
     width:100%;
  }
  
- ///////users//////
+ ///////users/////////
  .user_balance {
    padding-top: 5px;
    border: #212529 solid 3px;
@@ -102,6 +101,27 @@ footer {
    text-align: center;
    justify-content: space-around;
  }
+ 
+ .error_messages, #error_explanation {
+   color: red;
+ }
+ 
+  #error_explanation li {
+     list-style: none;
+  }
+  
+  .actions_btn {
+    margin: 5px auto;
+    background-color: #008b6a;
+    border: none;
+    color: #fff;
+    padding: 10px 10px;
+    &:hover {
+      color: #30f70c;
+    }
+  }
+  
+ 
  
  //////カテゴリー///////
  .category_entry {
@@ -136,4 +156,3 @@ select,input, textarea{
     margin: 10px 0;
     text-align: left;
 }
-
